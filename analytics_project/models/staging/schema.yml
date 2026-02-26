@@ -1,0 +1,28 @@
+#version: 2
+
+#sources:
+ # - name: analytics
+  #  database: analytics_db
+   # schema: analytics_schema
+    #tables:
+     # - name: raw_users
+version: 2
+
+sources:
+  - name: analytics
+    database: analytics_db
+    schema: analytics_schema
+    tables:
+      - name: raw_users
+
+models:
+  - name: stg_users
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique
+
+      - name: email
+        tests:
+          - not_null
